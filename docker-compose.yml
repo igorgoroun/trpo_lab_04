@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  db:
+    image: mysql
+    container_name: trpo_labs_db
+    restart: unless-stopped
+    user: "501:20"
+    env_file: .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - type: bind
+        source: ./.mysql
+        target: /var/lib/mysql

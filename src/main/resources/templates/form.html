@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/html_head :: html_head(page_title=${view_title})}"></head>
+
+<body>
+<nav th:replace="~{layout/menubar :: menubar}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-3" th:text="${view_title}"/>
+
+            <form th:action="@{'/' + ${model_shortcut} + '/' + ${form_action}}" role="form" method="post">
+                <input type="hidden" th:name="${model_shortcut}+'_id'" th:if="${form_data}" th:value="${form_data.getId()}">
+                <div class="row mb-3">
+                    <label for="name" class="col-sm-2 col-form-label text-end">Назва</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="name" th:value="${form_data} ? ${form_data.name}" name="name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10 offset-2">
+                        <button type="submit" class="btn btn-primary">Зберегти</button>
+                        <a type="button" th:href="@{'/' + ${model_shortcut} + '/list'}" class="btn btn-outline-secondary">Відміна</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/html_footer}"></div>
+</body>
+</html>
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/html_head :: html_head(page_title=${view_title})}"></head>
+
+<body>
+<nav th:replace="~{layout/menubar :: menubar}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-3 mb-0" th:text="${view_title}"/>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <a th:href="@{'/' + ${model_shortcut} + '/list'}" class="btn btn-sm btn-link mb-3"><i class="bi bi-arrow-left"></i> Перелік</a>
+
+            <h3 th:text="${record.name}"></h3>
+            <p><span th:text="${record.timeStart}"/> &mdash; <span th:text="${record.timeEnd}"/></p>
+
+            <a th:href="@{'/' + ${model_shortcut} + '/' +${record.getId()}+ '/edit'}" class="btn btn-outline-secondary btn-sm pt-0 pb-0"><i class="bi-pencil"></i></a>
+            <a th:href="@{'/' + ${model_shortcut} + '/' +${record.getId()}+ '/delete'}"  onclick="return confirm('Ви впевнені?');" class="btn btn-outline-danger btn-sm pt-0 pb-0"><i class="bi-trash-fill"></i></a>
+        </div>
+
+    </div>
+</div>
+
+<!--<p th:text="${user.name}"/>-->
+<!--<p th:text="${user.age}"/>-->
+<div th:replace="~{layout/html_footer}"></div>
+</body>
+</html>
+

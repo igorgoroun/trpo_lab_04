@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/html_head :: html_head(page_title=${view_title})}"></head>
+
+<body>
+<nav th:replace="~{layout/menubar :: menubar}"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1 class="display-3"><span th:text="${view_title}"/> <a th:href="@{'/' + ${model_shortcut} + '/new'}" class="btn btn-outline-primary btn-sm"><i class="bi-plus-lg"></i> Створити</a></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Назва</th>
+                    <th>Час початку</th>
+                    <th>Час закінчення</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p:${dictionary}">
+                    <td th:text="${p.id}"/>
+                    <td th:text="${p.name}"/>
+                    <td th:text="${p.timeStart}"/>
+                    <td th:text="${p.timeEnd}"/>
+                    <td class="text-end">
+                        <div class="btn-group" role="group" aria-label="Дії">
+                            <a th:href="@{'/' + ${model_shortcut} + '/' + ${p.id}}" type="button" class="btn btn-outline-secondary btn-sm pt-0 pb-0"><i class="bi-eye"></i></a>
+                            <a th:href="@{'/' + ${model_shortcut} + '/' + ${p.id} + '/edit'}" type="button" class="btn btn-outline-secondary btn-sm pt-0 pb-0"><i class="bi-pencil"></i></a>
+                            <a th:href="@{'/' + ${model_shortcut} + '/' + ${p.id} + '/delete'}" type="button" onclick="return confirm('Ви впевнені?');" class="btn btn-outline-danger btn-sm pt-0 pb-0"><i class="bi-trash-fill"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{layout/html_footer}"></div>
+
+</body>
+</html>
+

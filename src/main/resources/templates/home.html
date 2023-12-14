@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layout/html_head :: html_head(page_title='Головна')}"></head>
+
+<body>
+  <nav th:replace="~{layout/menubar :: menubar}"></nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="display-3">Розклад занять</h1>
+
+      </div>
+    </div>
+  </div>
+
+<!--<p th:text="${user.name}"/>-->
+<!--<p th:text="${user.age}"/>-->
+<div th:replace="~{layout/html_footer}"></div>
+</body>
+</html>
